@@ -1,0 +1,82 @@
+<html>
+<script
+  src="https://code.jquery.com/jquery-1.12.4.min.js"
+  integrity="sha256-ZosEbRLbNQzLpnKIkEdrPv7lOy9C27hHQ+Xp8a4MxAQ="
+  crossorigin="anonymous"></script>
+
+<style>
+
+
+img {
+width:40px; height:40px;
+}
+
+iframe {
+	background-color: rgba(0,0,0,0); width:100%; height:100%; top:0px; bottom:0px; left:0px; right: 0px;
+}
+
+div#blobbydiv
+{
+ 	display:none; position: fixed; top:0px; left:0px;  width:100%; height:100%; background-color: rgba(128,64,64,0.4);
+}
+</style>
+
+<script>
+
+function f(p) {
+	
+	$.ajax({
+        type: "HEAD",
+        async: true,
+        url: '/signiantinterop' + p,
+       	complete: function(xhr) {
+   			var datatype = xhr.getResponseHeader('Content-Type');
+			console.log("Data type of link target is " + datatype)
+   			if(datatype.startsWith('text/html')) {
+	   			document.getElementById('blobby').src='/signiantinterop' + p;
+	   			document.getElementById('blobbydiv').style.display="block"
+	   		}
+			if(datatype.startsWith('application/vnd....')) {
+				alert("Collection+JSON returned, so should be following normal practice");
+			}
+       	}
+    });
+	
+}
+
+function r(e) {
+	console.log("Close message received");
+	//TODO: Check source
+	document.getElementById('blobbydiv').style.display="none";
+}
+
+function c() {
+    document.getElementById('blobbydiv').style.display="none";
+	
+}
+
+window.addEventListener("message", r, false);
+
+
+</script>
+<head>
+</head>
+<body onkeyup="c()">
+<table style="background-color: grey" id="datatable">
+
+<tr><td>/mmfs1/hhh</td><td><a href="#" onclick="javascript:f('/mmfs1/hhh')"><img src="/public/siglogo.png"></a></td></tr>
+<tr><td>/mmfs1/aaa</td><td><a href="#" onclick="javascript:f('/mmfs1/aaa')"><img src="/public/siglogo.png"></a></td></tr>
+<tr><td>/mmfs1/bbb</td><td><a href="#" onclick="javascript:f('/mmfs1/bbb')"><img src="/public/siglogo.png"></a></td></tr>
+<tr><td>/mmfs1/ccc</td><td><a href="#" onclick="javascript:f('/mmfs1/ccc')"><img src="/public/siglogo.png"></a></td></tr>
+<tr><td>/mmfs1/ddd</td><td><a href="#" onclick="javascript:f('/mmfs1/ddd')"><img src="/public/siglogo.png"></a></td></tr>
+
+</table>
+
+
+<div id="blobbydiv">
+<iframe id="blobby" >
+</div>
+
+</body>
+</html>
+

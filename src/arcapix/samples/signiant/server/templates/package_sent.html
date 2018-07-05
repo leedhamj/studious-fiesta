@@ -1,0 +1,32 @@
+<html>
+<head><link rel="stylesheet" type="text/css" href="/public/style.css"/></head>
+
+<body>
+<script>
+function closeme() {
+	window.parent.postMessage("closeme", "*");
+	console.log("Close message sent")
+	//window.close();
+}
+</script>
+
+<div class="modal">
+
+An e-mail has been sent, with a copy to the local site administrator
+
+<pre>
+Dear Client.
+
+Click <a target="_blank" href="{{ url }}">here</a> to view your files
+
+Kind regards,
+
+Evil Hackers
+</pre>
+
+<a href="javascript:closeme()">Close</a>
+</div>
+
+</body>
+
+</html>

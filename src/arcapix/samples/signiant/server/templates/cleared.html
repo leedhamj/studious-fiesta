@@ -1,0 +1,17 @@
+<html>
+<head><link rel="stylesheet" type="text/css" href="/public/style.css"/></head>
+<body>
+<script>
+function closeme() {
+	window.parent.postMessage("closeme", "*");
+	console.log("Close message sent")
+	//window.close();
+}
+</script>
+<body>
+<div class="modal">
+Existing package cleared.
+
+<a href="javascript:closeme()">Close</a>
+</div>
+</html>

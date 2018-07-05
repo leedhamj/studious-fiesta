@@ -1,0 +1,35 @@
+<html>
+<head><link rel="stylesheet" type="text/css" href="/public/style.css"/></head>
+<body >
+<script>
+function closeme() {
+	window.parent.postMessage("closeme", "*");
+	console.log("Close message sent")
+	//window.close();
+}
+</script>
+
+<div class="modal" >
+<h2>
+Sending via Signiant....
+</h2>
+<div class="content">
+Files in the package:
+<ul>
+{% for file in files %}
+	<li>{{ file }} </li>
+{% endfor %}
+</ul>
+
+
+<p>
+
+<a href="javascript:closeme()">Continue adding files (Close)</a>
+<a href="/signiantinterop/checkout">Proceed to send package</a><br/>
+
+<a href="/signiantinterop/">Start a new package</a>
+</p></div>
+</div>
+
+</body>
+</html>

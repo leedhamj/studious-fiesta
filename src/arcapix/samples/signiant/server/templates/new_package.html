@@ -1,0 +1,23 @@
+<html>
+<head><link rel="stylesheet" type="text/css" href="/public/style.css"/></head>
+
+<body>
+<script>
+function closeme() {
+	window.parent.postMessage("closeme", "*");
+	console.log("Close message sent")
+	//window.close();
+}
+</script>
+<div class="modal">
+<h2>Sending via Signiant</h2>
+<form method="POST">
+Add {{ filename }} to a new package?
+<input type="hidden" value="{{ filename }}">
+<button name="submit">Add</button>
+</form>
+</div>
+</body>
+
+
+</html>

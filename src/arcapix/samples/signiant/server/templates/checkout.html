@@ -1,0 +1,39 @@
+<html>
+
+<head><link rel="stylesheet" type="text/css" href="/public/style.css"/></head>
+<body >
+
+<script>
+function closeme() {
+	window.parent.postMessage("closeme", "*");
+	console.log("Close message sent")
+	//window.close();
+}
+</script>
+
+
+<div class="modal">
+
+For package 
+
+<ul><li>{{ package }}</li>
+</ul>
+These files will be sent:
+
+<ul>
+{% for file in files %}
+	<li>{{ file }} </li>
+{% endfor %}
+</ul>
+
+<form method="POST">
+
+<input name="email" placeholder="email">
+<input name="date"  placeholder="date">
+<button type="submit" value="send package">Send Package</button>
+</form>
+
+</div>
+</body>
+
+</html>
